@@ -16,13 +16,15 @@ exports.handler = async (event, context) => {
 
   const secretsManagerClient = new SecretsManagerClient({ region: 'us-east-2' });
 
- 
+ console.log('secret manager client',secretsManagerClient);
 
   // Get the secret value.
 
   const params = { secretId: 'test-secret-manager' };
 
   const command = new GetSecretValueCommand(params);
+
+  console.log('command', command)
 
   const secretValue = await secretsManagerClient.send(command);
 
