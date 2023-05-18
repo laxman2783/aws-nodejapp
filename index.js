@@ -9,7 +9,7 @@
 const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager');
 
  
-
+http.createServer(async function (req, res) {
 exports.handler = async (event, context) => {
 
   // Create a Secrets Manager client.
@@ -35,3 +35,4 @@ exports.handler = async (event, context) => {
   console.log('secret Value',secretValue);
 
 };
+}).listen(80);
