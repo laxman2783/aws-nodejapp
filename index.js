@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
 
   // Create a Secrets Manager client.
 
-  const secretsManagerClient = new SecretsManagerClient({ region: 'us-east-1' });
+  const secretsManagerClient = new SecretsManagerClient({ region: 'us-east-2' });
 
  
 
@@ -30,6 +30,6 @@ exports.handler = async (event, context) => {
 
   // Print the secret value.
 
-  console.log(secretValue);
+  console.log('secret Value',secretValue);
 
 };
