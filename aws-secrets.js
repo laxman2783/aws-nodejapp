@@ -10,13 +10,13 @@ const {
   const secret_name = "test-secret-manager";
   
   const client = new SecretsManagerClient({
-    region: "us-east-2",
+    region: "us-east-1",
   });
   
   let response;
   
   try {
-    response = client.send(
+    response =  client.send(
       new GetSecretValueCommand({
         SecretId: secret_name,
         VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
@@ -30,7 +30,4 @@ const {
   
   const secret = response.SecretString;
 
-
-  console.log('secret', secret);
-  
-  // Your code goes here
+  console.log("secrets", secret);
