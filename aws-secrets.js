@@ -1,38 +1,36 @@
-/**
-* index.js 
-**/
+// Use this code snippet in your app.
+// If you need more information about configurations or implementing the sample code, visit the AWS docs:
+// https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/getting-started.html
+
+import {
+    SecretsManagerClient,
+    GetSecretValueCommand,
+  } from "@aws-sdk/client-secrets-manager";
+  
+  const secret_name = "test-secret-manager";
+  
+  const client = new SecretsManagerClient({
+    region: "us-east-2",
+  });
+  
+  let response;
+  
+  try {
+    response = client.send(
+      new GetSecretValueCommand({
+        SecretId: secret_name,
+        VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
+      })
+    );
+  } catch (error) {
+    // For a list of exceptions thrown, see
+    // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+    throw error;
+  }
+  
+  const secret = response.SecretString;
 
 
-
-var http = require('http');
-
-const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager');
-
- 
-http.createServer(async function (req, res) {
-exports.handler = async (event, context) => {
-
-  // Create a Secrets Manager client.
-
-  const secretsManagerClient = new SecretsManagerClient({ region: 'us-east-2' });
-
- console.log('secret manager client',secretsManagerClient);
-
-  // Get the secret value.
-
-  const params = { secretId: 'test-secret-manager' };
-
-  const command = new GetSecretValueCommand(params);
-
-  console.log('command', command)
-
-  const secretValue =  secretsManagerClient.send(command);
-
- 
-
-  // Print the secret value.
-
-  console.log('secret Value',secretValue);
-
-};
-}).listen(80);
+  console.log('secret', secret);
+  
+  // Your code goes here
