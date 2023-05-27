@@ -12,6 +12,7 @@ app.get("/getSecrets", (req, res) => {
     fetch("https://mt3itmqqbyedboiy6ftx4rsjcu0zqcwj.lambda-url.us-east-2.on.aws/")
         .then(res => res.json())
         .then(json => console.log(json));
+        res.send(json.password);
       //  req.end();
 })
 
