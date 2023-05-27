@@ -11,7 +11,7 @@ app.get("/secrets", (req, res) => {
     res.send("This is secret");
     fetch("https://mt3itmqqbyedboiy6ftx4rsjcu0zqcwj.lambda-url.us-east-2.on.aws/")
         .then(res => {
-            console.log("Response",res);
+            console.log("Response",res.json());
         });
         //res.json())
        // .then(json => console.log(json));
