@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('cross-fetch');
 
 const app = express();
 
